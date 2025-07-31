@@ -1,69 +1,47 @@
-# React + TypeScript + Vite
+# Minimal Library Management System 📚
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
 
-Currently, two official plugins are available:
+A clean, minimalistic library management system built with **React**, **TypeScript**, **Redux Toolkit Query (RTK Query)**, and **Node.js + Express** backend with **MongoDB**. This app enables users to manage books, perform CRUD operations, borrow books, and view borrowing summaries — all with a smooth and responsive user interface styled with **Tailwind CSS**.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🚀 Live Demo
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+🔗 **[View Live Demo](https://library-frontend-pearl.vercel.app)**  
+📂 **[Frontend Repository](https://github.com/Nissanbarua/L2A4-frontend)**  
+📂 **[Backend Repository](https://github.com/Nissanbarua/L2A4-backend)**  
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+## Features
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- **Public Routes** — Accessible without login or authentication.
+- **Book Management**
+  - View all books in a responsive table.
+  - Add, edit, and delete books.
+  - Real-time availability based on copies.
+- **Borrow Books**
+  - Borrow multiple copies with a due date.
+  - Business logic ensures copies availability.
+- **Borrow Summary**
+  - Aggregated view of all borrowed books.
+- **Responsive Design**
+  - Fully responsive UI for mobile, tablet, and desktop.
+- **Toast Notifications**
+  - Instant feedback on user actions using Sonner toast.
+  
+---
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Technology Stack
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+| Layer       | Technology                  |
+|-------------|-----------------------------|
+| Frontend    | React, TypeScript, Redux Toolkit Query, Tailwind CSS |
+| Backend     | Node.js, Express.js         |
+| Database    | MongoDB with Mongoose       |
+| Styling     | Tailwind CSS                |
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
+
+
