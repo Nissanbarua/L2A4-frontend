@@ -2,31 +2,37 @@
 import { Button } from "@/components/ui/button";
 import { useDeleteBookMutation, useGetBooksQuery } from "@/features/api/bookApi";
 import { Link } from "react-router-dom";
+import { toast } from "sonner";
 
 export default function AllBooks() {
   const { data: books = [], isLoading, isError } = useGetBooksQuery();
   const [deleteBook] = useDeleteBookMutation();
 
-  const handleDelete = async (id: string) => {
-    if (confirm("Are you sure you want to delete this book?")) {
-      await deleteBook(id);
+const handleDelete = async (id: string) => {
+  if (confirm("Are you sure you want to delete this book?")) {
+    try {
+      await deleteBook(id).unwrap();
+      toast.success("Book deleted successfully.");
+    } catch {
+      toast.error("Failed to delete book.");
     }
-  };
+  }
+};
 
   if (isLoading) return <p className="text-center py-4">Loading books...</p>;
   if (isError) return <p className="text-center py-4 text-red-500">Failed to load books</p>;
 
   return (
     <div className="max-w-6xl mx-auto">
-      <div className="flex justify-between items-center mb-6">
-        <h2 className="text-2xl font-bold">📚 All Books</h2>
+      <div className="flex justify-between items-center mb-6 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-2xl font-bold  mb-4"> All Books</h2>
         <Link to="/create-book">
           <Button>Add New Book</Button>
         </Link>
       </div>
 
-      <div className="overflow-x-auto border rounded-lg">
-        <table className="w-full text-left border-collapse">
+      <div className=" border rounded-lg overflow-x-auto">
+        <table className=" text-left border-collapse min-w-full border border-gray-300">
           <thead className="bg-gray-100">
             <tr>
               <th className="px-4 py-2">Title</th>

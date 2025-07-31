@@ -5,8 +5,11 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useAddBookMutation } from "@/features/api/bookApi";
+import { toast } from "sonner";
+
 
 export default function AddBook() {
+    
   const navigate = useNavigate();
   const [addBook, { isLoading }] = useAddBookMutation();
 
@@ -28,11 +31,18 @@ export default function AddBook() {
     }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    await addBook(formData);
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  try {
+    await addBook(formData).unwrap();
+    toast.success(`"${formData.title}" added successfully!`);
     navigate("/books");
-  };
+  } catch {
+    toast.error("Failed to add book. Please try again.");
+  }
+};
+
+
 
   return (
     <div className="max-w-lg mx-auto border p-6 rounded-lg shadow">

@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useGetBookQuery, useUpdateBookMutation } from "@/features/api/bookApi";
+import { toast } from "sonner";
 
 export default function EditBook() {
   const { id } = useParams<{ id: string }>();
@@ -45,13 +46,17 @@ export default function EditBook() {
     }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!id) return;
-
-    await updateBook({ id, data: formData });
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  if (!id) return;
+  try {
+    await updateBook({ id, data: formData }).unwrap();
+    toast.success(`"${formData.title}" updated successfully!`);
     navigate("/books");
-  };
+  } catch {
+    toast.error("Failed to update book.");
+  }
+};
 
   if (loadingBook) return <p className="text-center py-4">Loading book details...</p>;
 
