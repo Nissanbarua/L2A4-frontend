@@ -8,7 +8,7 @@ A clean, minimalistic library management system built with **React**, **TypeScri
 
 ## 🚀 Live Demo
 
-🔗 **[View Live Demo](https://library-frontend-pearl.vercel.app)**  
+🔗 **[View Live Demo](https://library-frontend-sandy-beta.vercel.app)**  
 📂 **[Frontend Repository](https://github.com/Nissanbarua/L2A4-frontend)**  
 📂 **[Backend Repository](https://github.com/Nissanbarua/L2A4-backend)**  
 
